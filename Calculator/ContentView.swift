@@ -64,7 +64,17 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
-            Text("0234567890")
+//            Button(action: {
+//                print("...")
+//            }) {
+//                Text("title")
+//                    .foregroundColor(.white)
+//                    .font(.system(size: 70))
+//                    .frame(width: 88, height: 88, alignment: .center)
+//                    .cornerRadius(44)
+//                    .background(Color(.blue))
+//            }
+            Text("0")
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)
                 .padding(.trailing, 24)
