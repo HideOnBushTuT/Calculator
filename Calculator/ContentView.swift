@@ -59,6 +59,7 @@ struct CalculatorPad: View {
 
 struct ContentView: View {
 //    let row: [CalculatorButtonItem] = [.digit(1), .digit(2), .digit(3), .op(.plus)]
+    let scale: CGFloat = UIScreen.main.bounds.width / 414
     
     var body: some View {
         VStack(spacing: 12) {
@@ -74,6 +75,7 @@ struct ContentView: View {
             CalculatorPad()
                 .padding(.bottom)
         }
+    .scaleEffect(scale)
 //        VStack(spacing: 8) {
 //                    ForEach(pad, id: \.self) { row in
 //                        CalculatorButtonRow(row: row)
