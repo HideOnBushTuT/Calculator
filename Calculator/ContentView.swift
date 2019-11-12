@@ -23,6 +23,13 @@ struct CalculatorButton: View {
             .background(Color(backgroundColorName))
             .cornerRadius(44)
         }
+//        ZStack {
+//            Circle()
+////                .background(Color(backgroundColorName))
+//            Text(title)
+//                .font(.system(size: fontSize))
+//                .foregroundColor(.white)
+//        }
     }
 }
 
