@@ -13,23 +13,29 @@ struct CalculatorButton: View {
     let size: CGSize
     let backgroundColorName: String
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
-            Text(title)
-            .font(.system(size: fontSize))
-            .foregroundColor(.white)
-                .frame(width: size.width, height: size.height)
-            .background(Color(backgroundColorName))
-            .cornerRadius(44)
-        }
-//        ZStack {
-//            Circle()
-////                .background(Color(backgroundColorName))
 //            Text(title)
 //                .font(.system(size: fontSize))
 //                .foregroundColor(.white)
+//                .frame(width: size.width, height: size.height)
+            ////                .background(Color.red)
+//                .background(Color(backgroundColorName))
+//                .cornerRadius(44)
 //        }
+            ZStack {
+                Circle()
+//                    .background(Color(backgroundColorName))
+                Text(title)
+                    .font(.system(size: fontSize))
+                    .foregroundColor(.white)
+            }
+            .frame(width: size.width, height: size.height, alignment: .center)
+            .background(Color(backgroundColorName))
+            .cornerRadius(size.height / 2)
+            
+        }
     }
 }
 
@@ -37,9 +43,9 @@ struct CalculatorButtonRow: View {
     let row: [CalculatorButtonItem]
     var body: some View {
         HStack {
-            ForEach(row, id: \.self) { (item) in
+            ForEach(row, id: \.self) { item in
                 CalculatorButton(title: item.title, size: item.size, backgroundColorName: item.backgroundColorName) {
-                print("Button: \(item.title)")
+                    print("Button: \(item.title)")
                 }
             }
         }
@@ -52,13 +58,13 @@ struct CalculatorPad: View {
         [.digit(7), .digit(8), .digit(9), .op(.multiply)],
         [.digit(4), .digit(5), .digit(6), .op(.minus)],
         [.digit(1), .digit(2), .digit(3), .op(.multiply)],
-        [.digit(0), .dot, .op(.equal)]
+        [.digit(0), .dot, .op(.equal)],
     ]
-    
+
     var body: some View {
-        VStack(spacing: 8) {
-                    ForEach(pad, id: \.self) { row in
-                        CalculatorButtonRow(row: row)
+        VStack(alignment: .center, spacing: 8) {
+            ForEach(pad, id: \.self) { row in
+                CalculatorButtonRow(row: row)
             }
         }
     }
@@ -67,7 +73,7 @@ struct CalculatorPad: View {
 struct ContentView: View {
 //    let row: [CalculatorButtonItem] = [.digit(1), .digit(2), .digit(3), .op(.plus)]
     let scale: CGFloat = UIScreen.main.bounds.width / 414
-    
+
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
@@ -92,7 +98,7 @@ struct ContentView: View {
             CalculatorPad()
                 .padding(.bottom)
         }
-    .scaleEffect(scale)
+        .scaleEffect(scale)
 //        VStack(spacing: 8) {
 //                    ForEach(pad, id: \.self) { row in
 //                        CalculatorButtonRow(row: row)
@@ -104,8 +110,7 @@ struct ContentView: View {
         //            CalculatorButtonRow(row: [.digit(0), .dot, .op(.equal)])
 //                }
     }
-        
-        
+
 //        HStack {
 //            ForEach(row, id: \.self) { (item) in
 //                CalculatorButton(title: item.title, size: item.size, backgroundColorName: item.backgroundColorName) {
@@ -130,5 +135,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.colorScheme, .dark)
     }
 }
