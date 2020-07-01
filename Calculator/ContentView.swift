@@ -16,26 +16,25 @@ struct CalculatorButton: View {
 
     var body: some View {
         Button(action: action) {
-//            Text(title)
-//                .font(.system(size: fontSize))
-//                .foregroundColor(.white)
-//                .frame(width: size.width, height: size.height)
-            ////                .background(Color.red)
-//                .background(Color(backgroundColorName))
-//                .cornerRadius(44)
-//        }
-            ZStack {
-                Circle()
-//                    .background(Color(backgroundColorName))
-                Text(title)
-                    .font(.system(size: fontSize))
-                    .foregroundColor(.white)
-            }
-            .frame(width: size.width, height: size.height, alignment: .center)
-            .background(Color(backgroundColorName))
-            .cornerRadius(size.height / 2)
-            
+            Text(title)
+                .font(.system(size: fontSize))
+                .foregroundColor(.white)
+                .frame(width: size.width, height: size.height)
+                //                .background(Color.red)
+                .background(Color(backgroundColorName))
+                .cornerRadius(44)
         }
+//            ZStack {
+//                Circle()
+//                    .background(Color(backgroundColorName))
+//                Text(title)
+//                    .font(.system(size: fontSize))
+//                    .foregroundColor(.white)
+//            }
+//            .background(Color(backgroundColorName))
+//            .frame(width: size.width, height: size.height, alignment: .center)
+//            .cornerRadius(size.height / 2)
+//        }
     }
 }
 
@@ -88,6 +87,7 @@ struct ContentView: View {
 //                    .background(Color(.blue))
 //            }
             Text("0")
+                .foregroundColor(.primary)
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)
                 .padding(.trailing, 24)
@@ -134,7 +134,11 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .environment(\.colorScheme, .dark)
+        Group {
+            ContentView()
+                .environment(\.colorScheme, .dark)
+            ContentView()
+                .environment(\.colorScheme, .light)
+        }
     }
 }
